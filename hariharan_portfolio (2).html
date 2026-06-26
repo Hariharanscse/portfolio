@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hariharan S — UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg2: #f8f8f6;
+      --bg3: #f1f0ec;
+      --text: #1a1a1a;
+      --text2: #555;
+      --text3: #999;
+      --border: #e8e6e0;
+      --accent: #4f46e5;
+      --radius: 10px;
+      --max: 760px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --bg2: #1a1a1a;
+        --bg3: #222;
+        --text: #f0f0f0;
+        --text2: #aaa;
+        --text3: #555;
+        --border: #2a2a2a;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+      max-width: 100%;
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 13px;
+      padding: 8px 18px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: var(--text);
+      color: var(--bg);
+      font-family: inherit;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* WRAPPER */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    .hero { padding: 5rem 2rem 4rem; max-width: var(--max); margin: 0 auto; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text3);
+      border: 0.5px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.6rem;
+    }
+    .hero-tag-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #f59e0b;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text2);
+      max-width: 500px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-primary {
+      padding: 12px 24px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+    .btn-secondary {
+      padding: 12px 24px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: var(--bg2); }
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .meta-item { font-size: 13px; color: var(--text3); }
+    .meta-item strong { color: var(--text); font-weight: 500; display: block; font-size: 14px; }
+
+    /* SECTION BASE */
+    .section {
+      padding: 4rem 2rem;
+      border-top: 0.5px solid var(--border);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .sec-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 0.5rem;
+    }
+    .sec-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+    .sec-sub { font-size: 14px; color: var(--text2); margin-bottom: 2.5rem; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .about-text { font-size: 14px; color: var(--text2); line-height: 1.85; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-card {
+      background: var(--bg2);
+      border-radius: 12px;
+      padding: 1.4rem;
+      border: 0.5px solid var(--border);
+    }
+    .about-card h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 0.9rem;
+    }
+    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .about-card li {
+      font-size: 13px;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .about-card li::before { content: '→'; color: var(--accent); font-size: 11px; }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+    .skill-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin: 1.2rem 0 0.4rem;
+      grid-column: 1 / -1;
+    }
+    .skill-chip {
+      padding: 9px 13px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .skill-chip:hover { border-color: var(--accent); background: var(--bg); }
+    .skill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* EXPERIENCE */
+    .exp-box {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+    }
+    .exp-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #fef3c7;
+      color: #92400e;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    @media (prefers-color-scheme: dark) {
+      .exp-badge { background: #422006; color: #fcd34d; }
+    }
+    .exp-role { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .exp-company { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+    .exp-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+    .exp-timeline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .exp-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+
+    /* PROJECTS */
+    .projects-placeholder {
+      border: 1.5px dashed var(--border);
+      border-radius: 12px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .projects-placeholder h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .projects-placeholder p { font-size: 13px; color: var(--text2); line-height: 1.7; max-width: 400px; margin: 0 auto; }
+    .coming-soon-tags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cs-tag {
+      font-size: 12px;
+      padding: 5px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      color: var(--text3);
+      background: var(--bg2);
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .contact-box h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .contact-box p { font-size: 14px; color: var(--text2); margin-bottom: 2rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .contact-link {
+      padding: 11px 16px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .contact-link:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .contact-icon { font-size: 15px; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.8rem 2rem;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      nav { padding: 1rem 1.5rem; }
+      .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Hariharan S</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="alert('Add your resume PDF link here!')">Resume ↓</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">
+    <span class="hero-tag-dot"></span>
+    Joining Onyes Infore Solution · Chennai · in 50 days
+  </div>
+  <h1>Hi, I'm<br><span>Hariharan S</span></h1>
+  <p class="hero-desc">
+    Aspiring UI/UX Designer from Tamil Nadu — passionate about crafting clean, intuitive interfaces. Bridging design and frontend, one pixel at a time.
+  </p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Work</button>
+    <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <strong>Pollachi, Tamil Nadu</strong>
+      Location
+    </div>
+    <div class="meta-item">
+      <strong>haririya18@gmail.com</strong>
+      Email
+    </div>
+    <div class="meta-item">
+      <strong>+91 70107 95990</strong>
+      Phone
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="sec-eyebrow">About Me</div>
+  <div class="sec-title">Designer in the making.</div>
+  <div class="sec-sub">Who I am and where I'm headed.</div>
+  <div class="about-grid">
+    <div class="about-text">
+      I'm Hariharan S, a UI/UX designer from Pollachi, Tamil Nadu. I'm passionate about designing user-friendly, visually clean interfaces that actually solve problems — not just look good.<br><br>
+      In <strong>50 days</strong>, I'll be joining <strong>Onyes Infore Solution, Chennai</strong> as a UI/UX Designer. Until then, I'm deep in learning mode — JavaScript, React, and sharpening my Figma skills every day.
+    </div>
+    <div class="about-card">
+      <h4>Currently learning</h4>
+      <ul>
+        <li>JavaScript (ES6+)</li>
+        <li>React basics</li>
+        <li>Git &amp; GitHub</li>
+        <li>Advanced Figma</li>
+        <li>Responsive CSS</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="sec-eyebrow">Skills</div>
+  <div class="sec-title">My toolkit.</div>
+  <div class="sec-sub">Design-first. Frontend growing every day.</div>
+  <div class="skills-grid">
+    <div class="skill-label">Design</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#a855f7"></span>Figma</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#ec4899"></span>UI Design</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#f97316"></span>UX Research</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#06b6d4"></span>Prototyping</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#6366f1"></span>Wireframing</div>
+    <div class="skill-label">Frontend</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#f59e0b"></span>HTML</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#3b82f6"></span>CSS</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#22c55e"></span>JavaScript</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0ea5e9"></span>React (learning)</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#8b5cf6"></span>Git / GitHub</div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="sec-eyebrow">Experience</div>
+  <div class="sec-title">Where I'm headed.</div>
+  <div class="sec-sub">Fresh start — real ambitions.</div>
+  <div class="exp-box">
+    <div class="exp-badge">⏳ Upcoming Role</div>
+    <div class="exp-role">UI/UX Designer</div>
+    <div class="exp-company">Onyes Infore Solution · Chennai Branch</div>
+    <div class="exp-desc">
+      Starting my professional design journey — working on UI/UX for client projects, collaborating with developers, and building real-world product experience from day one.
+    </div>
+    <div class="exp-timeline">
+      <span class="exp-dot"></span>
+      Joining in ~50 days &nbsp;·&nbsp; Full-time
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="sec-eyebrow">Projects</div>
+  <div class="sec-title">Coming soon.</div>
+  <div class="sec-sub">Real projects loading — watch this space.</div>
+  <div class="projects-placeholder">
+    <h4>Building my first projects 🛠</h4>
+    <p>Currently working on Figma case studies and frontend builds as part of my 50-day prep. Will be updated here with live links and screenshots soon.</p>
+    <div class="coming-soon-tags">
+      <span class="cs-tag">Figma Case Study</span>
+      <span class="cs-tag">Landing Page</span>
+      <span class="cs-tag">UI Kit</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="sec-eyebrow">Contact</div>
+  <div class="contact-box">
+    <h3>Let's connect!</h3>
+    <p>Open to learning, collaborations, and conversations about design &amp; frontend.</p>
+    <div class="contact-grid">
+      <a class="contact-link" href="mailto:haririya18@gmail.com">
+        <span class="contact-icon">✉</span> haririya18@gmail.com
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/hariharan-s-8517432b7" target="_blank">
+        <span class="contact-icon">in</span> LinkedIn Profile
+      </a>
+      <a class="contact-link" href="https://github.com/Hariharanscse" target="_blank">
+        <span class="contact-icon">⌥</span> GitHub
+      </a>
+      <a class="contact-link" href="tel:+917010795990">
+        <span class="contact-icon">📞</span> +91 70107 95990
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Built by Hariharan S · Pollachi, Tamil Nadu · 2025
+</footer>
+
+</body>
+</html>
